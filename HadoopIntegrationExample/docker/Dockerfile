@@ -24,4 +24,3 @@ COPY --from=builder --chown=app_runner:app /workspace/app/target/lib /app/lib
 COPY --from=builder --chown=app_runner:app /workspace/app/target/HadoopIntegrationExample*.jar /app
 WORKDIR /app
 ENTRYPOINT ["java","-jar","HadoopIntegrationExample*.jar"]
-EXPOSE 8080

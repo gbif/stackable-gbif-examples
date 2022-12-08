@@ -44,7 +44,7 @@
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.gbif.HadoopIntegrationExample</mainClass>
+                            <mainClass>org.gbif.examples.HadoopIntegrationExample</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>lib/</Class-Path>

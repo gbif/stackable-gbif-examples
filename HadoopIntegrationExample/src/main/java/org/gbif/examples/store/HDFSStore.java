@@ -1,4 +1,4 @@
-package org.gbif.store;
+package org.gbif.examples.store;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -43,6 +43,5 @@ public class HDFSStore {
 
     public void copy(String src, String dest){
         copy(new Path(src), new Path(dest));
-
     }
 }

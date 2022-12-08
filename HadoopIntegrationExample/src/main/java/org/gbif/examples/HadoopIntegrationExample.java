@@ -1,9 +1,9 @@
-package org.gbif;
+package org.gbif.examples;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.gbif.store.HDFSStore;
+import org.gbif.examples.store.HDFSStore;
 
 import java.io.IOException;
 
@@ -14,8 +14,7 @@ public class HadoopIntegrationExample {
         Configuration loaded = new Configuration();
         try {
             HDFSStore store = new HDFSStore(loaded.get("fs.defaultFS"));
-            store.copy("/data/occurrence", "/data/temporary/2/");
-            LOGGER.info("Test");
+            store.copy("/data/occurrence", "/data/temporary");
         } catch (IOException e) {
             LOGGER.error("Unable to create filesystem for HDFS.", e);
             System.exit(1);
