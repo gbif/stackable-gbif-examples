@@ -2,6 +2,7 @@ package org.gbif.examples.store;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.FileUtil;
 import org.apache.hadoop.fs.Path;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,10 +33,11 @@ public class HDFSStore {
 
     public void copy(Path src, Path dest){
         try {
-            if(!resolvedFileSystem.exists(dest)){
-                resolvedFileSystem.mkdirs(dest);
+            if(resolvedFileSystem.exists(dest)){
+                resolvedFileSystem.delete(dest,true);
             }
-            resolvedFileSystem.copyFromLocalFile(src,dest);
+            FileUtil.copy(resolvedFileSystem, src, resolvedFileSystem, dest,false, true, hdfsConfigurations);
+
         } catch (IOException e) {
             LOGGER.error("Unable to copy from {} to destination {}", src.toString(), dest.toString(), e);
         }
